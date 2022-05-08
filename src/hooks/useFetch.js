@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import { ACTIONS } from "../actions/fetch";
 
 import { API } from "../API";
@@ -13,7 +13,7 @@ export const useFetch = (endpoint = "") => {
       dispatch({ type: ACTIONS.SET_DATA, payload: data });
     } catch (e) {
       dispatch({ type: ACTIONS.SET_ERROR });
-      console.log(e);
+      console.error(e);
     }
   }, [endpoint]);
 
@@ -21,6 +21,5 @@ export const useFetch = (endpoint = "") => {
     getData();
   }, [endpoint, getData]);
 
-  console.log(state);
   return state;
 };
